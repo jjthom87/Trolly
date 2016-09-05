@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "companyresearch3_db",
+    "database": "companyresearch4_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
