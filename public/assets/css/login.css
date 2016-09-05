@@ -1,0 +1,58 @@
+
+
+.loginBody {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background: url("../images/research1.jpg");
+  background-size: cover;
+}
+
+#top2 {
+    position: relative;
+    min-height: 50px;
+    margin-top: -20px;
+    /*margin-bottom: 20px;*/
+    border-bottom: 1px solid transparent;
+    border-color: #080808;
+    background: white;
+}
+
+#mainlogin {
+  margin-top: 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sectioner {
+  border-color: #white;
+  background: white;
+}
+
+.sectionerReg {
+  position: static;
+  border-color: #white;
+  background: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: -30px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background: rgba(darken($primary,40%), 0.85);
+}
+
+    &:not(.loading) button:hover {
+      box-shadow: 0px 1px 3px $primary;
+    }
+    &:not(.loading) button:focus {
+      border-bottom-width: 4px;
+    }

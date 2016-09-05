@@ -1,0 +1,267 @@
+.top {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+#site-nav a{
+    padding:7px 30px;
+    min-width:120px;
+    font-size: 16px;
+    font-weight: 6400;
+    color:#89949C;
+    text-align: center;
+    background: none;
+    -webkit-transition: color .2s ease-out, padding .3s ease-out;
+    transition: color .2s ease-out, padding .3s ease-out;
+}
+
+#site-nav .active a,
+#site-nav a:hover,
+#site-nav a:focus{
+    padding-top: 4px;
+    padding-bottom:10px;
+    color:#00CCCB !important;
+    background: none;
+}
+#site-nav a .fa{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 21px;
+    text-align: center;
+}
+
+#site-nav ul li + li{
+    border-left:1px solid #b9c4cC;
+}
+table, th, td {
+   border: 1px solid black;
+}
+
+/*Ethans css */
+.navbar-header{
+    padding-left:10px;
+
+}
+.logo{
+    display:inline-block;
+
+}
+
+.submit {
+  color: white;
+}
+
+.navbar {
+    background-color: white;
+}
+
+#logo{
+    height: 65px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#tname{
+    font-family: 'EB Garamond', serif;
+    display:inline-block;
+    margin-bottom: 1px;
+    margin-top:0px;
+    font-size: 59px;
+    margin-left: 10px;
+}
+
+#logoName {
+    background-color: lightgrey;
+    padding-right:20px;
+
+}
+
+#navList{
+    margin-top: 15px;
+    margin-right:5%;
+    padding-bottom:0px;
+
+}
+
+#navList a {
+    background-color: lightgray;
+    color:black;
+    margin-right: 15px;
+    font-size: 17px;
+    font-family: 'EB Garamond', serif;
+    -webkit-transition: color .2s ease-out, padding .3s ease-out;
+    transition: color .2s ease-out, padding .3s ease-out;
+}
+#navList a:hover{
+    padding-top: 4px;
+    padding-bottom:10px;
+    color:#00CCCB !important;
+    background: none;
+    font-family: 'EB Garamond', serif;
+
+}
+
+.headText {
+    font-family: 'EB Garamond', serif;
+}
+
+#title {
+    text-align: center;
+}
+
+.tips li {
+    margin-bottom:10px;
+}
+
+#pageNav {
+    background-color: none;
+    padding:10px;
+    margin-right: 33%;
+    font-size: 15px;
+}
+
+#pageNav a:hover{
+    padding-top: 4px;
+    padding-bottom:10px;
+    color:#00CCCB !important;
+    background: none;
+    font-family: 'EB Garamond', serif;
+}
+
+.recruiterTable td{
+    padding:5px;
+}
+
+.recruiterTable th{
+    text-align: center;
+}
+
+#pic1{
+    margin-left:20px;
+}
+
+#pic2 {
+    margin-left: 90px;
+}
+
+
+/*Jamar css*/
+
+.loginBody {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background: url("../images/research1.jpg");
+  background-size: cover;
+}
+
+#top2 {
+    position: relative;
+    min-height: 50px;
+    margin-top: -20px;
+    /*margin-bottom: 20px;*/
+    border-bottom: 1px solid transparent;
+    border-color: #080808;
+    background: white;
+}
+
+#mainlogin {
+  margin-top: 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sectioner {
+  border-color: #white;
+  background: white;
+  padding: 20px;
+
+}
+
+.sectionerReg {
+  position: static;
+  border-color: #white;
+  background: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: -30px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background: rgba(darken($primary,40%), 0.85);
+}
+
+    &:not(.loading) button:hover {
+      box-shadow: 0px 1px 3px $primary;
+    }
+    &:not(.loading) button:focus {
+      border-bottom-width: 4px;
+    }
+
+    #parentheader {
+        background-image: url("../images/theheader40.jpg");
+        background-repeat: repeat-y; /* for vertical repeat */
+        background-repeat: repeat-x; /* for horizontal repeat */
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        text-align: center;
+        color: black;
+    }
+
+    #childheader {
+    color: black;
+    }
+
+footer {
+    padding:20px;
+    background-color:lightgray;
+    border-top:thick double black;
+}
+
+.footer2{
+  position: fixed;
+  padding:20px;
+  background-color:lightgray;
+  border-top:thick double black;
+}
+
+#appform {
+    background-color: lightgray;
+    padding-top:20px;
+}
+
+#applicationData {
+    background-color:lightgray;
+    margin-top: 10px;
+    padding: 10px;
+}
+#appcontent{
+    padding:10px;
+}
+
+.appTextBox {
+    background-color: #F5F5F5;
+}
+
+#datebox{
+width:218px;
+overflow: hidden;
+white-space: nowrap;
+/*///////////*/

@@ -1,0 +1,91 @@
+
+<form action="/login" method="post">
+  <div class="header navbar2 navbar-inverse navbar-static-top" id = "top2">
+                  <div class="navbar-header" id='logoName'>
+                          <img src="static/images/mocklogo.png" alt="Logo" id='logo' class="navbar-left">
+                          <h1 id='tname'>JobTroll </h1>
+  </div>
+  <div class="navbar-collapse collapse" id="navList">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/mainpage" class="scrollto" id="mainlogin">Main</a>
+        </li>
+      </ul>
+  </div>
+</div>
+  {{!--<div class= "container">
+    <div class = "row">
+      <div col-md-5>
+      <label>Username:</label>
+      <input type="text" name="username"/>
+  </div>
+  <div>
+      <label>Password:</label>
+      <input type="password" name="password"/>
+  </div>
+  <div>
+      <input type="submit" value="login"/>
+  </div>--}}
+  <div>
+      {{!--<button class="btn btn-lg btn-primary btn-block" type="submit"><a href="/register">Sign in</a></button>--}}
+  {{!--<button type="button" class="btn btn-default"><a href="/register">New Member?</a></button>--}}
+  </div>
+  <script>
+    d3.selectAll("label").transition().style("background-color", "blue");
+    d3.select("body").transition()
+      .style("background-color", "gray");
+  </script>
+{{!--</form>--}}
+</div>
+  <div class= "loginBody">
+      <div class="wrapper">
+      <div class= "container">
+        <div class = "row">
+           <div class="col-md-6 col-md-offset-3 text-center enter_section">
+             <div class="sectioner">
+             <div>
+               <br>
+              <label>Username:</label>
+              <input type="text" name="username"/>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="password"/>
+            </div>
+
+      <div>
+        <input type="submit" class="btn btn-lg btn-default" value="login"/>
+      <button type="button" class="btn btn-lg btn-default" type="submit"><a href="/register">New Member?</a></button>
+      </div>
+<br>
+
+
+      </form>
+    </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+
+  <!-- <div class="wrapper">
+  <form class="login">
+    <p class="title">Log in</p>
+    <input type="text" placeholder="Username" autofocus/>
+    <i class="fa fa-user"></i>
+    <input type="password" placeholder="Password" />
+    <i class="fa fa-key"></i>
+    <button>
+      <i class="spinner"></i>
+      <span class="state">Log in</span>
+    </button>
+  </form>
+  </p>
+</div> -->
+
+</div>
+<footer class = "text-center">
+	<h7>JobTroll Inc.</h7>
+
+</footer>

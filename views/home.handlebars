@@ -1,0 +1,98 @@
+<div class="header navbar navbar-inverse navbar-static-top" id = "top">
+                <div class="navbar-header" id='logoName'>
+                        <img src="static/images/mocklogo.png" alt="Logo" id='logo' class="navbar-left">
+                        <h1 id='tname'>JobTroll </h1>
+</div>
+<div class="navbar-collapse collapse" id="navList">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+          <a href="/mainpage" class="scrollto">Main</a>
+      </li>
+      <li>
+        <a href="/research" class="scrollto">Job Research</a>
+      </li>
+      <li>
+          <a href="/logout" class="scrollto">Log Out</a>
+      </li>
+    </ul>
+</div>
+</div>
+<h1 class="text-center">Welcome Home {{data.user.firstName}}!</h1>
+<div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 text-center enter_section" id='appform'>
+			<form action="/create" method="post">
+      {{!-- <form id="appSubmit"> --}}
+				<input type="text" class="form-control" name="companyName" value="" id="enter_text" placeholder="Company Name">
+                <input type="text" class="form-control" name="position" value="" id="enter_text" placeholder="Position applied for">
+                <input type="text" class="form-control" name="dateApplied" value="" id="enter_text" placeholder="mm/dd/yyyyy" >
+                <input type="text" class="form-control" name="replied" value="" id="enter_text" placeholder="Have they replied back?">
+                <input type="text" class="form-control" name="nextEvent" value="" id="enter_text" placeholder="What is the next event?">
+                <input type="text" class="form-control" name="resume" value="" id="enter_text" placeholder="Have you submitted your resume?">
+                <input type="text" class="form-control" name="notes" value="" id="enter_text" placeholder="Enter Notes here">
+                
+				<button type="submit" class="btn btn-primary" id="text-enter-button" name={{user.id}}>Submit</button>
+			</form>
+			<p></p>
+		</div>
+	</div>
+</div>
+</div>
+
+{{!--<div id = "applicationData">
+  {{#each data.enteredApp}}
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">Job Application #{{this.id}}</h3>
+        </div>
+        <div class="panel-body">
+          <table class="recruiterTable">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Position</th>
+                <th>Date Applied (Y/N)</th>
+                <th>Replied</th>
+                <th>Next Event</th>
+                <th>Resume (Y/N)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{this.companyName}}</td>
+                <td>{{this.position}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>{{this.replied}}</td>
+                <td>{{this.nextEvent}}</td>
+                <td>{{this.resume}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+    </div>
+  </div>
+  {{/each}}--}}
+
+    {{#each data.enteredApp}}
+    <div id = "applicationData" class='col-md-6 col-md-offset-3'>
+        <div id='appcontent' class="appTextBox">
+            <div class='row'>
+                <p class='col-md-4'><b>Company:</b>{{this.companyName}}</p>
+                <p class='col-md-4'><b>Position:</b>{{this.position}}</p>
+                <p class='col-md-4' id="datebox"><b>Date Applied:</b>{{this.createdAt}} </p>
+            </div>
+            <div class='row'>
+                <p class='col-md-4'><b>Have they replied:</b>{{this.replied}}</p>
+                <p class='col-md-4'><b>Next Event:</b>{{this.nextEvent}}</p>
+                <p class='col-md-4'><b>Submitted Resume:</b>{{this.resume}}</p>
+            </div>
+        <p><b>Notes:</b>{{this.notes}}</p>
+        </div>
+    </div>
+    {{/each}}

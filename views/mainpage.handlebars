@@ -1,0 +1,169 @@
+<form action="/mainpage" method="post">
+  <div class="header navbar navbar-inverse navbar-static-top" id = "top">
+                  <div class="navbar-header" id='logoName'>
+                          <img src="static/images/mocklogo.png" alt="Logo" id='logo' class="navbar-left">
+                          <h1 id='tname'>JobTroll </h1>
+              </div>
+  <div class="navbar-collapse collapse" id="navList">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/home" class="scrollto">Home</a>
+        </li>
+        <li>
+            <a href="/login" class="scrollto">Log In</a>
+        </li>
+        <li>
+            <a href="/register" class="scrollto">Register</a>
+        </li>
+        <li>
+          <a href="/research" class="scrollto">Job Research</a>
+        </li>
+      </ul>
+  </div>
+</div>
+
+<div class = "jumbotron text-center" id="parentheader">
+   <div id = "childheader">
+      <h1 id = "sectionTitle" class="headText">Welcome to JobTroll</h1>
+          <h3>Job Troll helps fresh out of bootcamp graduates organize their job applications,
+            connects you with recruiters, gives tips and provides resources.
+            We're here to help you troll employers until they give you a job!
+          </h3>
+              <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+    </div>
+ </div>
+
+<script>
+d3.selectAll("h1").style("color", function() {
+  return "hsl(" + Math.random() * 360 + ",100%,50%)";
+});
+</script>
+
+<div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" id = "services">
+                    <h2 class="section-heading">Services</h2>
+                    <h3 class="section-subheading text-muted">Get started with your career search using our services</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <img src="static/images/email.png" class="products" alt="recruiters" height="75px" width="75px">
+                    <h4 class="service-heading">Organize and send applications</h4>
+                    <p class="text-muted">
+                      Organize, track and send your application to kick off your coding career.
+                      Everything begins with applying to all the right places and avoiding applying
+                      twice.
+                    </p>
+                </div>
+                <!-- <img src="/static/images/research1.jpg" class="img-responsive" alt="" height="75px" weight="75px"> -->
+
+                <div class="col-md-4" id ="serviceimages">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <img src="static/images/recruiters.png" class="products" alt="recruiters" height="75px" weight="75px">
+                    <h4 class="service-heading">Connect with recruiters</h4>
+                    <p class="text-muted">Engage with recruiters who want to learn about you and your experiences.
+                    There's nothing wrong with a little networking. </p>
+                </div>
+                <!-- <img src="/static/images/connectRecruiters.jpg" class="img-responsive" alt=""> -->
+
+                <div class="col-md-4">
+                  <img src="static/images/interviewing.png" class="products" alt="recruiters" height="75px" weight="75px">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Get interview tips</h4>
+                    <p class="text-muted"> Don't know where to begin? Great! Make sure
+                      you read through all our applications tips and links to other great resources.
+                      Never depend on just one single source in perfecting your interview.
+                    </p>
+                </div>
+                <!-- <img src="/static/images/interview2.jpg" class="img-responsive" alt=""> -->
+            </div>
+        </div>
+        <div class = "jumbotron text-center">
+      		<h1 id = "sectionTitle" class="headText">Connect with us</h1>
+      		<h3>Meet the innovators of tomorrow
+      		</h3>
+          <section id="team" class="bg-light-gray">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12 text-center">
+                              <h2 class="section-heading">Our Amazing Team</h2>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-3">
+                              <div class="team-member">
+                                  <img src="/static/images/jared.jpg" class="img-responsive img-circle" alt="">
+                                  <h4>Jared</h4>
+                                  <p class="text-muted">Founder</p>
+                                  <ul class="list-inline social-buttons">
+                                    <a href="https://github.com/jjthom87">
+                                      <img src="static/images/github.png" height="30px" width="30px" alt="Github"/> </a>
+                                    <a href="https://www.linkedin.com/in/jared-thomas-a7873732">
+                                      <img src="static/images/linkedin.png" height="30px" width="30px" alt="Linkedin" /></a>
+                                  </ul>
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="team-member">
+                                  <img src="/static/images/jamar.jpg" class="img-responsive img-circle" alt="">
+                                  <h4>Jamar</h4>
+                                  <p class="text-muted">Founder</p>
+                                  <ul class="list-inline social-buttons">
+                                    <a href="https://github.com/jrizza88">
+                                      <img src="static/images/github.png" height="30px" width="30px" alt="Github"/> </a>
+                                    <a href="https://www.linkedin.com/in/jamartorres">
+                                      <img src="static/images/linkedin.png" height="30px" width="30px" alt="Linkedin" /></a>
+                                  </ul>
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="team-member">
+                                  <img src="/static/images/ethan.jpg" class="img-responsive img-circle" alt="">
+                                  <h4>Ethan</h4>
+                                  <p class="text-muted">Founder</p>
+                                  <ul class="list-inline social-buttons">
+                                    <a href="https://github.com/SunnyE">
+                                      <img src="static/images/github.png" height="30px" width="30px" alt="Github"/> </a>
+                                    <a href="https://www.linkedin.com/in/ethanfavia">
+                                      <img src="static/images/linkedin.png" height="30px" width="30px" alt="Linkedin" /></a>
+                                  </ul>
+
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="team-member">
+                                  <img src="/static/images/damola.jpg" class="img-responsive img-circle" alt="">
+                                  <h4>Damola</h4>
+                                  <p class="text-muted">Founder</p>
+                                  <ul class="list-inline social-buttons">
+                                    <a href="https://github.com/dalabi">
+                                      <img src="static/images/github.png" height="30px" width="30px" alt="Github"/> </a>
+                                    <a href="https://www.linkedin.com/in/damolaalabi">
+                                      <img src="static/images/linkedin.png" height="30px" width="30px" alt="Linkedin" /></a>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-8 col-lg-offset-2 text-center">
+                              <p class="large text-muted">Connect with us on Linkedin and Github to collaborate on the next big thing and of course to add to Job Troll.</p>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+      	</div>
+<footer class = "text-center">
+	<h7>JobTroll Inc.</h7>
+
+</footer>

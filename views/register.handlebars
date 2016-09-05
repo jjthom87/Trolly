@@ -1,0 +1,71 @@
+<div class="header navbar2 navbar-inverse navbar-static-top" id = "top2">
+                <div class="navbar-header" id='logoName'>
+                        <img src="static/images/mocklogo.png" alt="Logo" id='logo' class="navbar-left">
+                        <h1 id='tname'>JobTroll </h1>
+</div>
+<div class="navbar-collapse collapse" id="navList">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+          <a href="/mainpage" class="scrollto" id="mainlogin">Main</a>
+      </li>
+    </ul>
+  </div>
+</div>
+{{#if errors}}
+    {{#each errors}}
+      <div class="alert alert-danger">{{msg}}</div>
+    {{/each}}
+{{/if}}
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 enter_section">
+    <div class= "loginBody">
+      <div class="wrapper">
+        <div class="container">
+          <div class="sectionerReg">
+            <form method="post" action="/register">
+              <h2 class = "text-center"><u>Register</u></h2>
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" placeholder="First Name" name="firstName">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" name="lastName">
+              </div>
+              <div class="form-group">
+
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="Username" name="username">
+
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="Email" class="form-control" placeholder="Email" name="email">
+              </div>
+            <!--<div class="form-group">
+                <label>User Image</label>
+                <input type="userImage" class="form-control" placeholder="add image url" name="image">
+              </div> -->
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password Between 7 - 20 Characters" name="password">
+              </div>
+              <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" placeholder="Confirm Your Password" name="password2">
+              </div>
+                <button type="submit" class="btn btn-primary" value="register">Submit</button>
+              </div>
+            </form>
+            <br>
+            <button type="button" class="btn btn-default"><a href="/login">Already a member?</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class = "text-center">
+	<h7>JobTroll Inc.</h7>
+
+</footer>
