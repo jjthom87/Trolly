@@ -12,7 +12,7 @@ var SequelizeStore = require('connect-session-sequelize')(session.Store);
 var mysql = require('mysql');
 
 var LocalStrategy = require('passport-local').Strategy;
-var importData = require('./config/orm.js')['exportData'];
+// var importData = require('./config/orm.js')['exportData'];
 
 // var db = require('./models/index.js').sequelize;
 var models = require('./models');
@@ -30,7 +30,7 @@ var Application = models.Application;
 
 var app = express();
 
-process.env.JAWSDB_URL = 'mysql://lc7r3bwce9cy16mn:gnaprt97jclnmqtu@uoa25ublaow4obx5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/bzilksa4rr2vj1zy';
+process.env.JAWSDB_URL = 'mysql://s3ieywc2tfk67ogr:gfar78psdoc23nqq@uoa25ublaow4obx5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dcxlmv09gtr7m6lo';
 
 var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
@@ -200,12 +200,12 @@ app.get('/dummy', function(req, res){
      });
 
 
-      app.get('/research', function(req,res){
-        importData.selectAll(function(success){
-        res.render('research',{data: success})
+      // app.get('/research', function(req,res){
+      //   importData.selectAll(function(success){
+      //   res.render('research',{data: success})
 
-        })
-      });
+      //   })
+      // });
 
     //app.listen(8000)
 
