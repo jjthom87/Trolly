@@ -12,11 +12,7 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   console.log("using defaults");
-  var sequelize = new Sequelize('companyresearch4_db', 'root', null, {
-    host: 'localhost',
-    dialect: 'mysql',
-    port: 3306
-  })
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
 fs
