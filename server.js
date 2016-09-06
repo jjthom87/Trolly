@@ -23,7 +23,7 @@ var data;
 
 // this is used to sync the data
 
-db.sync({force: true});
+db.sync();
 
 var User = models.User;
 var Application = models.Application;
