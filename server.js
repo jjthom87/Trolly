@@ -23,24 +23,24 @@ var data;
 
 // this is used to sync the data
 
-db.sync();
+db.sync({force: true});
 
 var User = models.User;
 var Application = models.Application;
 
 var app = express();
 
-process.env.JAWSDB_URL = 'mysql://s3ieywc2tfk67ogr:gfar78psdoc23nqq@uoa25ublaow4obx5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dcxlmv09gtr7m6lo';
+// process.env.JAWSDB_URL = 'mysql://s3ieywc2tfk67ogr:gfar78psdoc23nqq@uoa25ublaow4obx5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dcxlmv09gtr7m6lo';
 
-var connection = mysql.createConnection(process.env.JAWSDB_URL);
+// var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
-connection.connect();
+// connection.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-  if (err) throw err;
+// connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+//   if (err) throw err;
 
-  console.log('The solution is: ', rows[0].solution);
-});
+//   console.log('The solution is: ', rows[0].solution);
+// });
 
 var companies = models.Companies;
 
