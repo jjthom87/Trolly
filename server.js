@@ -12,7 +12,7 @@ var SequelizeStore = require('connect-session-sequelize')(session.Store);
 var mysql = require('mysql');
 
 var LocalStrategy = require('passport-local').Strategy;
-// var importData = require('./config/orm.js')['exportData'];
+// var importData = require('./config/researchData.js')['exportData'];
 
 var models = require('./models');
 var db = models.sequelize;
@@ -126,69 +126,66 @@ var companies = models.Companies;
   });
 
   app.get('/home', function (req, res){
-      var enteredApplication;
-      var data;
-      if (req.user) {
-          Application.findAll({where: {UserId: req.user.id} }).then(function(success){
-            enteredApplication = success;
+      // if (req.user) {
+          User.findOne({ where: {id: req.user.id}}).then(function(user){
+            user.getApplications().then(function(apps){
+            var enteredApplications = [];
+
+          apps.forEach(function(app){
+            enteredApplications.push(app);
           })
-          data = {
+          var data = {
             user: req.user,
-            enteredApp: enteredApplication
+            enteredApp: enteredApplications
           }
           res.render('home', {data: data});
-          Application.findAll({where: {UserId: req.user.id} }).then(function(success){
-            enteredApplication = success;
-          })
-    } else {
-      		res.redirect('/login');
-    }
+        // }
+        });
+      });
   });
 
-    app.get('/dummy', function(req, res){
-      var enteredApplication;
-      var data;
-      if (req.user)
-      {
-              Application.findAll({where: {UserId: req.user.id} }).then(function(success){
-                enteredApplication = success;
-              })
-              data = {
-                user: req.user,
-                enteredApp: enteredApplication
-              }
-      }
-      res.redirect('/home');
-    });
+    // app.get('/dummy', function(req, res){
+    //   var enteredApplication;
+    //   var data;
+    //   if (req.user)
+    //   {
+    //   Application.findAll({where: {UserId: req.user.id} }).then(function(success){
+    //       enteredApplication = success;
+    //     })
+    //           data = {
+    //             user: req.user,
+    //             enteredApp: enteredApplication
+    //           }
+    //   }
+    //   res.redirect('/home');
+    // });
 // ----- Registration GET Request ------ //
-    app.get('/register', function(req, res) {
-     	res.render('register'); // uses register.handlebars
-    });
+  app.get('/register', function(req, res) {
+   	res.render('register'); // uses register.handlebars
+  });
 
 
      //Register user
-     app.post('/register',function(req,res){
-          models.User.create({
-            username: req.body.username,
-            password: req.body.password,
-            email: req.body.email,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName
-       //     Image: req.body.image
-          }).then(function() {
-            res.redirect('/');
-          }).catch(function(err){
-            throw err;
-          });
-     });
+  app.post('/register',function(req,res){
+      models.User.create({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
+   //     Image: req.body.image
+      }).then(function() {
+        res.redirect('/');
+      }).catch(function(err){
+        throw err;
+      });
+  });
 
 
-     app.get('/logout', function(req, res){
-      //var name = req.user.username;
-      req.logout();
-      //console.log(name + "works");
-      res.redirect('/');
-     });
+ app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+ });
 
 
       // app.get('/research', function(req,res){
@@ -197,8 +194,6 @@ var companies = models.Companies;
 
       //   })
       // });
-
-    //app.listen(8000)
 
 
 
@@ -215,40 +210,27 @@ var companies = models.Companies;
 //  }
 //));
 app.post('/create', function(req, res){
-  User.findOne({where: {id: req.user.id}}).then(function(){
-    Application.create({
-        companyName: req.body.companyName,
-        position:req.body.position,
-        dataApplied: req.body.dateApplied,
-        replied:req.body.replied,
-        nextEvent:req.body.nextEvent,
-        notes:req.body.notes,
-        resume:req.body.resume
-  }).then(function(application){
-    req.user.addApplication(application).then(function(){
-    res.redirect('/dummy');
-  }).catch(function(err){
-    throw err;
-  });
-})
-})
+    User.findOne({where: {id: req.user.id}}).then(function(){
+        Application.create({
+            companyName: req.body.companyName,
+            position:req.body.position,
+            dataApplied: req.body.dateApplied,
+            replied:req.body.replied,
+            nextEvent:req.body.nextEvent,
+            notes:req.body.notes,
+            resume:req.body.resume
+        }).then(function(application){
+        req.user.addApplication(application).then(function(){
+        res.redirect('/home');
+      }).catch(function(err){
+        throw err;
+      });
+    })
+  })
 });
 
 var PORT = process.env.PORT || 8000;
 
-    app.listen(PORT, function () {
-      console.log('database operation on port: ' + PORT);
-     });
-
-	// models.Manager.findOne({where: { fullName: name} })
-	// // pass the manager in a callback function
-	// .then(function(manager){
-	// 	// then get that manager's stores using
-	// 	// using the belongToMany() getAssociations method
-	// 	return manager.getStores()
-	// 	// use those stores in a callback function
-	// 	.then(function(stores){
-	// 		// and send the stores to the client as json
-	// 		return res.json(stores);
-	// 	})
-	// })
+app.listen(PORT, function () {
+  console.log('database operation on port: ' + PORT);
+ });

@@ -11,7 +11,6 @@ var db        = {};
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
-  console.log("using defaults");
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
