@@ -21,7 +21,7 @@ var db = models.sequelize;
 
 // this is used to sync the data
 
-db.sync();
+db.sync({force: true});
 
 var User = models.User;
 var Application = models.Application;
@@ -126,7 +126,6 @@ var companies = models.Companies;
   });
 
   app.get('/home', function (req, res){
-      // if (req.user) {
           User.findOne({ where: {id: req.user.id}}).then(function(user){
             user.getApplications().then(function(apps){
             var enteredApplications = [];
@@ -139,26 +138,9 @@ var companies = models.Companies;
             enteredApp: enteredApplications
           }
           res.render('home', {data: data});
-        // }
         });
       });
   });
-
-    // app.get('/dummy', function(req, res){
-    //   var enteredApplication;
-    //   var data;
-    //   if (req.user)
-    //   {
-    //   Application.findAll({where: {UserId: req.user.id} }).then(function(success){
-    //       enteredApplication = success;
-    //     })
-    //           data = {
-    //             user: req.user,
-    //             enteredApp: enteredApplication
-    //           }
-    //   }
-    //   res.redirect('/home');
-    // });
 // ----- Registration GET Request ------ //
   app.get('/register', function(req, res) {
    	res.render('register'); // uses register.handlebars
