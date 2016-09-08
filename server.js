@@ -10,51 +10,58 @@ var session = require('express-session');
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
 // using local strategy, and setting it up here to give options.
 var mysql = require('mysql');
-
 var LocalStrategy = require('passport-local').Strategy;
 // var importData = require('./config/researchData.js')['exportData'];
 
+// this is used to sync the data
 var models = require('./models');
 var db = models.sequelize;
-// var enteredApplication;
-// var data;
-
-// this is used to sync the data
-
 db.sync();
 
 var User = models.User;
 var Application = models.Application;
+var Companies = models.Companies;
 
 var app = express();
 
-
-var companies = models.Companies;
-
  // module.exports =
- passport.use('local', new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({where: {username: username} } ).then(function(user){
-      if (!user){
-        return done(null, false);
-      }
-           if (!user.username) {
-             return done(null, false);
-           }
+ // passport.use('local', new LocalStrategy(
+ //  function(username, password, done) {
+ //    User.findOne({where: {username: username} } ).then(function(user){
+ //      if (!user){
+ //        return done(null, false);
+ //      }
+ //           if (!user.username) {
+ //             return done(null, false);
+ //           }
 
-           bcrypt.compare(password, user.password, function(err, result) {
-             if (result) {
-               return done(null, false);
-             }
-           })
+ //           bcrypt.compare(password, user.password, function(err, result) {
+ //             if (result) {
+ //               return done(null, false);
+ //             }
+ //           })
 
-           return done(null, user);
-         })
-         .catch(function(err) {
-           throw err;
-         })
-       }
-     ));
+ //           return done(null, user);
+ //         })
+ //         .catch(function(err) {
+ //           throw err;
+ //         })
+ //       }
+ //     ));
+    module.exports = 
+    passport.use('local', new LocalStrategy(
+      function(username, password, done){
+        User.findOne({ where: {username: username}}).then(function(user){
+            if (!user){
+              return done(null, false, {message: 'Incorrect Username'});
+            }
+            if (!user.password === password){
+              return done(null, false, {message: 'incorrect password'});
+            }
+            return done(null, user)
+          });
+        }
+    ));
 
      passport.serializeUser(function(user, cb) {
        cb(null, user.id);
@@ -99,10 +106,6 @@ var companies = models.Companies;
         res.render('mainpage');
       });
 
-      app.get('/mainpage', function(req, res) {
-        res.render('mainpage');
-      });
-
      app.get('/login', function(req, res) {
        res.render('login');
 
@@ -118,14 +121,20 @@ var companies = models.Companies;
 //          res.redirect('/home');
 //  });
 
-  app.post('/login', passport.authenticate('local', {
-	failureRedirect: '/login' }), function(req,res){
-    req.session.save(function(){
-        res.redirect('/home')
+  app.post('/login', 
+    passport.authenticate('local', {
+      successRedirect: '/home',
+	    failureRedirect: '/login',
+      failureFlash: true
     })
-  });
+  );
 
   app.get('/home', function (req, res){
+        if (!req.isAuthenticated()){
+            req.session.error = 'Please sign in!';
+            res.redirect('/home');
+            return false;
+          };
           User.findOne({ where: {id: req.user.id}}).then(function(user){
             user.getApplications().then(function(apps){
             var enteredApplications = [];
