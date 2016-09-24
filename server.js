@@ -11,7 +11,7 @@ var SequelizeStore = require('connect-session-sequelize')(session.Store);
 // using local strategy, and setting it up here to give options.
 var mysql = require('mysql');
 var LocalStrategy = require('passport-local').Strategy;
-// var importData = require('./config/researchData.js')['exportData'];
+var importData = require('./config/researchData.js')['exportData'];
 
 // this is used to sync the data
 var models = require('./models');
@@ -48,44 +48,58 @@ var app = express();
  //         })
  //       }
  //     ));
-    module.exports = 
-    passport.use('local', new LocalStrategy(
-      function(username, password, done){
-        User.findOne({ where: {username: username}}).then(function(user){
-            if (!user){
-              return done(null, false, {message: 'Incorrect Username'});
-            }
-            if (!user.password === password){
-              return done(null, false, {message: 'incorrect password'});
-            }
-            return done(null, user)
-          });
+
+passport.serializeUser(function(user,done){
+  done(null, user);
+ });
+
+passport.deserializeUser(function(obj,done){
+  done(null, obj);
+ });
+
+module.exports = 
+passport.use('local', new LocalStrategy(
+  function(username, password, done){
+    User.findOne({ where: {username: username}}).then(function(user){
+        if (!user){
+          return done(null, false, {message: 'Incorrect Username'});
         }
-    ));
+        // var correctPassword = user.password;
 
-     passport.serializeUser(function(user, cb) {
-       cb(null, user.id);
-     });
+        // if (password !== correctPassword){
+        //   return done(null, false, {message: 'incorrect password'});
+        // }
+        if (user.password !== password){
+          return done(null, false, {message: 'incorrect password'});
+        }
+        return done(null, user)
+      });
+    }
+));
 
-     passport.deserializeUser(function(id, cb) {
-       User.findOne( {where: {id: id} }).then(function(user) {
-         cb(null, user);
-       }).catch(function(err) {
-         if (err) {
-           return cb(err);
-         }
-       });
-     });
+     // passport.serializeUser(function(user, cb) {
+     //   cb(null, user.id);
+     // });
+
+     // passport.deserializeUser(function(id, cb) {
+     //   User.findOne( {where: {id: id} }).then(function(user) {
+     //     cb(null, user);
+     //   }).catch(function(err) {
+     //     if (err) {
+     //       return cb(err);
+     //     }
+     //   });
+     // });
 
      app.use(bodyParser.urlencoded({ extended: true }))
      app.use(bodyParser.json())
      app.use(cookieParser())
      app.use(session({
        secret: 'jobtroll is the ticket to success',
-       store: new SequelizeStore({
-         db: db
-       }),
-       resave: false,
+       // store: new SequelizeStore({
+       //   db: db
+       // }),
+       resave: true,
        saveUninitialized: true
      }));
      app.use(passport.initialize());
@@ -108,7 +122,6 @@ var app = express();
 
      app.get('/login', function(req, res) {
        res.render('login');
-
      });
 
 //     app.post('/login',
@@ -124,15 +137,14 @@ var app = express();
   app.post('/login', 
     passport.authenticate('local', {
       successRedirect: '/home',
-	    failureRedirect: '/login',
-      failureFlash: true
+	    failureRedirect: '/login'
     })
   );
 
   app.get('/home', function (req, res){
         if (!req.isAuthenticated()){
             req.session.error = 'Please sign in!';
-            res.redirect('/home');
+            res.redirect('/login');
             return false;
           };
           User.findOne({ where: {id: req.user.id}}).then(function(user){
@@ -179,12 +191,12 @@ var app = express();
  });
 
 
-      // app.get('/research', function(req,res){
-      //   importData.selectAll(function(success){
-      //   res.render('research',{data: success})
+app.get('/research', function(req,res){
+  importData.selectAll(function(success){
+  res.render('research',{data: success})
 
-      //   })
-      // });
+  })
+});
 
 
 
